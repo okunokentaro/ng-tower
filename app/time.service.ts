@@ -1,20 +1,25 @@
 import {Injectable} from '@angular/core';
 
+import {Frame} from './domain/core/frame/frame';
+import {Day} from './domain/core/time/day';
+import {Hour} from './domain/core/time/hour';
+import {Minute} from './domain/core/time/minute';
 import {FrameService} from './frame.service';
 
-export function frameToTimes(frame: number): [number, number, number] {
-  const d = ~~(frame / (24 * 60)); // Math.floor hack
-  const h = ~~((frame - 24 * 60 * d) / 60);
-  const m = ~~((frame - 24 * 60 * d) % 60);
-  return [d, h, m];
+export function frameToTimes(f: Frame): [Day, Hour, Minute] {
+  return [
+    Day.byFrame(f),
+    Hour.byFrame(f),
+    Minute.byFrame(f)
+  ];
 }
 
 @Injectable()
 export class TimeService {
 
   constructor(private frameService: FrameService) {
-    this.frameService.subscribe((frame) => {
-      const time = frameToTimes(frame);
+    this.frameService.subscribe((f) => {
+      const time = frameToTimes(f);
       console.log(time);
     });
   }
