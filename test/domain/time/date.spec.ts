@@ -1,11 +1,11 @@
 import 'core-js';
 import * as assert from 'power-assert';
 
-import {frameToTimes} from '../app/time.service';
-import {Frame} from '../app/domain/core/frame/frame';
-import {Day} from '../app/domain/core/time/day';
-import {Hour} from '../app/domain/core/time/hour';
-import {Minute} from '../app/domain/core/time/minute';
+import {frameToTimes} from '../../../app/time.service';
+import {Frame} from '../../../app/domain/core/frame/frame';
+import {Day} from '../../../app/domain/core/time/day';
+import {Hour} from '../../../app/domain/core/time/hour';
+import {Minute} from '../../../app/domain/core/time/minute';
 
 const parameterized = (param: Frame, expected: [Day, Hour, Minute]) => {
   it(`${param} should be [${expected}]`, () => {
