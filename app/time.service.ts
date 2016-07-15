@@ -2,19 +2,19 @@ import {Injectable} from '@angular/core';
 
 import {FrameService} from './frame.service';
 
-export function getTimes(minute: number): [number, number] {
-  const h = Math.floor(minute / 60);
-  const m = Math.floor(minute % 60);
-  return [h, m];
+export function frameToTimes(frame: number): [number, number, number] {
+  const d = ~~(frame / (24 * 60)); // Math.floor hack
+  const h = ~~((frame - 24 * 60 * d) / 60);
+  const m = ~~((frame - 24 * 60 * d) % 60);
+  return [d, h, m];
 }
 
 @Injectable()
 export class TimeService {
 
   constructor(private frameService: FrameService) {
-    const framePerMinute = (12 * 60) / this.frameService.frameLength;
     this.frameService.subscribe((frame) => {
-      const time = getTimes(frame * framePerMinute);
+      const time = frameToTimes(frame);
       console.log(time);
     });
   }

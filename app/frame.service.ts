@@ -19,7 +19,7 @@ export class FrameService {
     this.window = windowProvider.getWindow();
 
     this.startTime   = this.window.performance.now();
-    this.fps         = 240;
+    this.fps         = 24;
     this.frameLength = 12 * 60 * 2; // h * m * resolution
 
     this.subject = new Subject<number>();
@@ -29,9 +29,9 @@ export class FrameService {
     const loop = () => {
       requestAnimationFrame(loop);
       const lastTime = this.window.performance.now();
-      const frame    = Math.floor(
-        (lastTime - this.startTime) / (1000.0 / this.fps) % this.frameLength
-      );
+      const frame    = ~~(
+        (lastTime - this.startTime) / (1000.0 / this.fps)
+      ); // Math.floor hack
       this.subject.next(frame);
     };
     loop();

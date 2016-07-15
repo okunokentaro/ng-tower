@@ -1,28 +1,22 @@
 import 'core-js';
 import * as assert from 'power-assert';
 
-import {getTimes} from '../app/time.service';
+import {frameToTimes} from '../app/time.service';
+
+const parameterized = (param: number, expected: [number, number, number]) => {
+  it(`${param} should be [${expected}]`, () => {
+    assert.deepEqual(frameToTimes(param), expected);
+  });
+};
 
 describe('TimeService', () => {
-  describe(`getTimes`, () => {
-    it('0 should be [0, 0]', () => {
-      assert.deepEqual(getTimes(0), [0, 0]);
-    });
-
-    it('1.5 should be [0, 1]', () => {
-      assert.deepEqual(getTimes(1.5), [0, 1]);
-    });
-
-    it('59 should be [0, 59]', () => {
-      assert.deepEqual(getTimes(59), [0, 59]);
-    });
-
-    it('60 should be [1, 0]', () => {
-      assert.deepEqual(getTimes(60), [1, 0]);
-    });
-
-    it('719 should be [11, 59]', () => {
-      assert.deepEqual(getTimes(719), [11, 59]);
-    });
+  describe(`frameToTimes`, () => {
+    parameterized(    0,   [0,  0,  0]);
+    parameterized(    1.5, [0,  0,  1]);
+    parameterized(   59,   [0,  0, 59]);
+    parameterized(   60,   [0,  1,  0]);
+    parameterized( 1439,   [0, 23, 59]);
+    parameterized( 1440,   [1,  0,  0]);
+    parameterized(12345,   [8, 13, 45]);
   });
 });
