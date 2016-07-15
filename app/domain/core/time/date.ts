@@ -7,11 +7,11 @@ import {Minute} from './minute';
 export class Date extends AnyVal<[Day, Hour, Minute]> {
 
   static byFrame(f: Frame) {
-    return [
+    return new Date([
       Day.byFrame(f),
       Hour.byFrame(f),
       Minute.byFrame(f)
-    ];
+    ]);
   }
 
   toString(): string {
