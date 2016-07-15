@@ -1,9 +1,9 @@
 import 'core-js';
 import * as assert from 'power-assert';
 
-import {getTimes} from '../app/clock.service';
+import {getTimes} from '../app/time.service';
 
-describe('ClockService', () => {
+describe('TimeService', () => {
   describe(`getTimes`, () => {
     it('0 should be [0, 0]', () => {
       assert.deepEqual(getTimes(0), [0, 0]);

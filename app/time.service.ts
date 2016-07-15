@@ -9,7 +9,7 @@ export function getTimes(minute: number): [number, number] {
 }
 
 @Injectable()
-export class ClockService {
+export class TimeService {
 
   constructor(private frameService: FrameService) {
     const framePerMinute = (12 * 60) / this.frameService.frameLength;
