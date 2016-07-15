@@ -6,11 +6,12 @@ import {WindowProvider} from './window-provider.service';
 @Injectable()
 export class TimeService {
 
+  readonly frameLength: number;
+
   private window: Window;
 
   private startTime: number;
-  private fps: number;
-  private frameLength: number;
+  private fps: number; // When fps is 24, 1 minute is equal to 12 hours in the game.
 
   private subject: Subject<number>;
 
@@ -18,8 +19,8 @@ export class TimeService {
     this.window = windowProvider.getWindow();
 
     this.startTime   = this.window.performance.now();
-    this.fps         = 30;
-    this.frameLength = 6;
+    this.fps         = 240;
+    this.frameLength = 12 * 60 * 2; // h * m * resolution
 
     this.subject = new Subject<number>();
   }

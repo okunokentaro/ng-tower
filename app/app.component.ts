@@ -4,6 +4,7 @@ import {AppDispatcher} from './app.dispatcher';
 import {AppStore} from './app.store';
 import {WindowProvider} from './window-provider.service';
 import {TimeService} from './time.service';
+import {ClockService} from './clock.service';
 
 @Component({
   selector  : 'tw-app',
@@ -12,7 +13,8 @@ import {TimeService} from './time.service';
     AppDispatcher,
     AppStore,
     WindowProvider,
-    TimeService
+    TimeService,
+    ClockService
   ],
   template  : `
     <div>ng-tower</div>
@@ -22,7 +24,8 @@ export class AppComponent {
 
   constructor(private dispatcher: AppDispatcher,
               private store: AppStore,
-              private timeService: TimeService) {
+              private timeService: TimeService,
+              private clockService: ClockService) {
     // noop
   }
 
