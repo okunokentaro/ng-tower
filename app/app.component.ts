@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {AppDispatcher} from './app.dispatcher';
 import {AppStore} from './app.store';
 import {WindowProvider} from './window-provider.service';
-import {TimeService} from './time.service';
+import {FrameService} from './frame.service';
 import {ClockService} from './clock.service';
 
 @Component({
@@ -13,7 +13,7 @@ import {ClockService} from './clock.service';
     AppDispatcher,
     AppStore,
     WindowProvider,
-    TimeService,
+    FrameService,
     ClockService
   ],
   template  : `
@@ -24,7 +24,7 @@ export class AppComponent {
 
   constructor(private dispatcher: AppDispatcher,
               private store: AppStore,
-              private timeService: TimeService,
+              private frameService: FrameService,
               private clockService: ClockService) {
     // noop
   }
@@ -37,7 +37,7 @@ export class AppComponent {
   }
 
   private startMainLoop(): void {
-    this.timeService.run();
+    this.frameService.run();
   }
 
 }

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 
-import {TimeService} from './time.service';
+import {FrameService} from './frame.service';
 
 export function getTimes(minute: number): [number, number] {
   const h = Math.floor(minute / 60);
@@ -11,9 +11,9 @@ export function getTimes(minute: number): [number, number] {
 @Injectable()
 export class ClockService {
 
-  constructor(private timeService: TimeService) {
-    const framePerMinute = (12 * 60) / this.timeService.frameLength;
-    this.timeService.subscribe((frame) => {
+  constructor(private frameService: FrameService) {
+    const framePerMinute = (12 * 60) / this.frameService.frameLength;
+    this.frameService.subscribe((frame) => {
       const time = getTimes(frame * framePerMinute);
       console.log(time);
     });

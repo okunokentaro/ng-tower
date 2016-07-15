@@ -4,7 +4,7 @@ import {Subject} from 'rxjs/Rx';
 import {WindowProvider} from './window-provider.service';
 
 @Injectable()
-export class TimeService {
+export class FrameService {
 
   readonly frameLength: number;
 
