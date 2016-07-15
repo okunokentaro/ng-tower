@@ -1,6 +1,6 @@
 export class AnyVal<T> {
 
-  constructor(private v: T) {
+  constructor(protected v: T) {
     // noop
   }
 

@@ -9,7 +9,7 @@ export class TimeService {
   constructor(private frameService: FrameService) {
     this.frameService.subscribe((f) => {
       const date = Date.byFrame(f);
-      console.log(date);
+      console.log(`${date}`);
     });
   }
 
