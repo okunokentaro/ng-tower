@@ -16,11 +16,18 @@ export class Date extends AnyVal<[Day, Hour, Minute]> {
   }
 
   toString(): string {
-    return `${[this.value[0], this.value[1], this.value[2]]}`;
+    return `${[this.v[0], this.v[1], this.v[2]]}`;
+  }
+
+  clock(): string {
+    const h = this.v[1];
+    const m = `0${this.v[2]}`.slice(-2);
+
+    return `${h}:${m}`;
   }
 
   currentPartsOfDay(): PartsOfDay {
-    return this.value[1].currentPartsOfDay();
+    return this.v[1].currentPartsOfDay();
   }
 
 }

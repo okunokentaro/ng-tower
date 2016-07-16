@@ -7,8 +7,6 @@ import {WindowProvider} from './window-provider.service';
 @Injectable()
 export class FrameService {
 
-  readonly frameLength: number;
-
   private window: Window;
 
   private startTime: number;
@@ -21,7 +19,6 @@ export class FrameService {
 
     this.startTime   = this.window.performance.now();
     this.fps         = 24;
-    this.frameLength = 12 * 60 * 2; // h * m * resolution
 
     this.subject = new Subject<Frame>();
   }
@@ -38,12 +35,8 @@ export class FrameService {
     loop();
   }
 
-  /**
-   * @return disposer
-   */
-  subscribe(observer: (f: Frame) => void): () => void {
-    const subscription = this.subject.subscribe(observer);
-    return () => subscription.unsubscribe();
+  get observable(): Subject<Frame> {
+    return this.subject;
   }
 
 }

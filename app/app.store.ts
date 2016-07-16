@@ -1,14 +1,18 @@
 import {Injectable} from '@angular/core';
 import {State, Store} from 'walts';
 
+import {PartsOfDay} from './domain/core/parts-of-day/parts-of-day';
+import {Night} from './domain/core/parts-of-day/night';
 import {AppDispatcher} from './app.dispatcher';
 
 export class AppState extends State {
-  // none
+  partsOfDay: PartsOfDay;
+  clock: string;
 }
 
 const INIT_STATE: AppState = {
-  // none
+  partsOfDay: new Night(),
+  clock     : ''
 };
 
 @Injectable()
