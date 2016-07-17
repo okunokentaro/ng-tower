@@ -14,7 +14,7 @@ const parameterized = (param: Frame, expected: Date) => {
 };
 
 describe('Date', () => {
-  describe(`.byFrame()`, () => {
+  describe('.byFrame()', () => {
     parameterized(new Frame    (0), new Date([new Day(0), new Hour( 0), new Minute( 0)]));
     parameterized(new Frame   (59), new Date([new Day(0), new Hour( 0), new Minute(59)]));
     parameterized(new Frame   (60), new Date([new Day(0), new Hour( 1), new Minute( 0)]));

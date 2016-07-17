@@ -41,7 +41,7 @@
     "lint": "./tslint.sh",
     "postinstall": "typings install",
     "start": "superstatic --port 8080 --host 127.0.0.1",
-    "test": "npm run clean && npm run tsc && mocha --require intelli-espower-loader ./.tmp/test/**/*.spec.js",
+    "test": "npm run clean && npm run tsc && mocha --require intelli-espower-loader --reporter dot ./.tmp/test/**/*.spec.js",
     "tsc": "tsc -p .",
     "webpack": "webpack ./.tmp/app/index.js --output-filename ./built/index.js"
   }
