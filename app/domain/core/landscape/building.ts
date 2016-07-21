@@ -1,4 +1,6 @@
 import {Level, maxLevel} from './level';
+import {FloorUnit} from './floor-unit';
+import {LevelUnit} from './level-unit';
 
 export class Building {
 
@@ -15,6 +17,14 @@ export class Building {
     }
 
     return building;
+  }
+
+  totalFloorUnit(): FloorUnit {
+    return this.building[0].count();
+  }
+
+  totalLevelUnit(): LevelUnit {
+    return new LevelUnit(this.building.length);
   }
 
 }

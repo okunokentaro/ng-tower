@@ -1,7 +1,8 @@
 import {AbstractFloor} from './abstract-floor';
 import {EmptySpace} from './empty-space';
 import {maxFloor} from './floor';
-import {LevelUnit} from "./level-unit";
+import {LevelUnit} from './level-unit';
+import {FloorUnit} from './floor-unit';
 
 export const maxLevelGround   = new LevelUnit(100);
 export const maxLevelBasement = new LevelUnit(10);
@@ -21,8 +22,8 @@ export class Level {
     // noop
   }
 
-  count(): number {
-    return this.floors.length;
+  count(): FloorUnit {
+    return new FloorUnit(this.floors.length);
   }
 
 }

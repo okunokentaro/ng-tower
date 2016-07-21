@@ -14,7 +14,7 @@ describe('Building', () => {
 
     it('One level is including maxFloor-pieces of floor', () => {
       const result = Building.emptyBuilding();
-      assert(result[0].count() === maxFloor.value);
+      assert(result[0].count().value === maxFloor.value);
     });
   });
 });
