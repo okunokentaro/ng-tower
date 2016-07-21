@@ -3,16 +3,20 @@ import {State, Store} from 'walts';
 
 import {PartsOfDay} from './domain/core/parts-of-day/parts-of-day';
 import {Night} from './domain/core/parts-of-day/night';
+import {Landscape} from './domain/application/landscape/landscape';
+
 import {AppDispatcher} from './app.dispatcher';
 
 export class AppState extends State {
   partsOfDay: PartsOfDay;
   clock: string;
+  landscape: Landscape;
 }
 
 const INIT_STATE: AppState = {
   partsOfDay: new Night(),
-  clock     : ''
+  clock     : '',
+  landscape : Landscape.blankLandscape()
 };
 
 @Injectable()
