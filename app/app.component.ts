@@ -1,9 +1,6 @@
 import {Component} from '@angular/core';
 
-import {ACTIONS} from './actions/index';
-import {UpdatePartsOfDayAction} from './actions/update-parts-of-day.action';
-import {UpdateClockAction} from './actions/update-clock.action';
-
+import {AppActions} from './app.action';
 import {AppDispatcher} from './app.dispatcher';
 import {AppStore} from './app.store';
 import {WindowProvider} from './window-provider.service';
@@ -16,7 +13,7 @@ import {LandscapeComponent} from './landscape.component';
   selector  : 'tw-app',
   directives: [LandscapeComponent],
   providers : [
-    ACTIONS,
+    AppActions,
     AppDispatcher,
     AppStore,
     WindowProvider,
@@ -52,21 +49,20 @@ export class AppComponent {
               private store: AppStore,
               private frameService: FrameService,
               private timeService: TimeService,
-              private updatePartsOfDay: UpdatePartsOfDayAction,
-              private updateClock: UpdateClockAction) {
+              private actions: AppActions) {
     // noop
   }
 
   ngOnInit(): void {
     this.startMainLoop();
-    this.store.observable.subscribe((state) => {
-      this.clock = state.clock;
+    this.store.getClock().subscribe((clock) => {
+      this.clock = clock;
     });
 
     this.timeService.observable.subscribe((date) => {
       this.dispatcher.emitAll([
-        this.updatePartsOfDay.create(date),
-        this.updateClock.create(date)
+        this.actions.updatePartsOfDay(date),
+        this.actions.updateClock(date)
       ]);
     });
   }

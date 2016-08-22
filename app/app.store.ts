@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
 import {State, Store} from 'walts';
 
 import {PartsOfDay} from './domain/core/parts-of-day/parts-of-day';
@@ -24,6 +25,18 @@ export class AppStore extends Store<AppState> {
 
   constructor(private dispatcher: AppDispatcher) {
     super(INIT_STATE, dispatcher);
+  }
+
+  getPartsOfDay(): Observable<PartsOfDay> {
+    return this.observable.map(s => s.partsOfDay);
+  }
+
+  getClock(): Observable<string> {
+    return this.observable.map(s => s.clock);
+  }
+
+  getLandscape(): Observable<Landscape> {
+    return this.observable.map(s => s.landscape);
   }
 
 }

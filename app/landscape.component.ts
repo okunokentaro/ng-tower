@@ -78,10 +78,8 @@ export class LandscapeComponent {
   }
 
   ngOnInit(): void {
-    this.store.observable.subscribe((state) => {
-      this.landscape  = state.landscape;
-      this.partsOfDay = state.partsOfDay;
-    });
+    this.store.getLandscape() .subscribe((s) => this.landscape = s);
+    this.store.getPartsOfDay().subscribe((s) => this.partsOfDay = s);
   }
 
   ngAfterViewInit(): void {
