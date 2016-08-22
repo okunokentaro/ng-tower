@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 
-import {AppActions} from './app.action';
+import {AppActions} from './app.actions';
 import {AppDispatcher} from './app.dispatcher';
 import {AppStore} from './app.store';
 import {WindowProvider} from './window-provider.service';
