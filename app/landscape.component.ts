@@ -5,14 +5,13 @@ import {AppStore} from './app.store';
 import {PartsOfDay} from './domain/core/parts-of-day/parts-of-day';
 
 @Component({
-  selector  : 'tw-landscape',
-  directives: [],
-  host: {
+  selector: 'tw-landscape',
+  host    : {
     '[style.display]': '"block"',
     '[style.width]'  : 'width',
     '[style.height]' : 'height'
   },
-  template  : `
+  template: `
     <style>
       .block {
         display: block;

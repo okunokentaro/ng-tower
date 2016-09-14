@@ -3,23 +3,11 @@ import {Component} from '@angular/core';
 import {AppActions} from './app.actions';
 import {AppDispatcher} from './app.dispatcher';
 import {AppStore} from './app.store';
-import {WindowProvider} from './window-provider.service';
 import {FrameService} from './frame.service';
 import {TimeService} from './time.service';
 
-import {LandscapeComponent} from './landscape.component';
-
 @Component({
   selector  : 'tw-app',
-  directives: [LandscapeComponent],
-  providers : [
-    AppActions,
-    AppDispatcher,
-    AppStore,
-    WindowProvider,
-    FrameService,
-    TimeService
-  ],
   template  : `
     <style>
       :host {
